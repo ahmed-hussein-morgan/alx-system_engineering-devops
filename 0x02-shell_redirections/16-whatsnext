@@ -1,0 +1,2 @@
+#!/bin/bash
+less /etc/passwd | grep -e "root" | head --lines=3
