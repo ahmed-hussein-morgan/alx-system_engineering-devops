@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+#checking the good luck
+n=1
+while [ $n -le 20 ];
+do
+
+case $n in
+
+4)
+echo "4"
+echo "bad luck from China"
+;;
+
+9)
+echo "4"
+echo "bad luck from Japan"
+;;
+
+17)
+echo "17"
+echo "bad luck from Italy"
+;;
+
+*)
+echo $n
+;;
+
+esac
+
+((n += 1))
+
+done
