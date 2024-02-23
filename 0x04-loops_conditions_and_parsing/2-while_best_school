@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#printing "bestschool" usin while
+n=0
+while [ $n -lt 10 ];
+do
+echo "Best School"
+((n+=1))
+done
