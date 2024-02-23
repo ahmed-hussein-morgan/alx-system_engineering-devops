@@ -3,6 +3,6 @@
 n=0
 until [ $n -eq 10 ];
 do
-echo "Best School"
-((n+=1))
+    echo "Best School"
+    ((n+=1))
 done

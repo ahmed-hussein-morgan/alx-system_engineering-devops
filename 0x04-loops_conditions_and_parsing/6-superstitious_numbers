@@ -4,29 +4,29 @@ n=1
 while [ $n -le 20 ];
 do
 
-case $n in
+    case $n in
 
-4)
-echo "4"
-echo "bad luck from China"
-;;
+        4)
+            echo "4"
+            echo "bad luck from China"
+        ;;
 
-9)
-echo "9"
-echo "bad luck from Japan"
-;;
+        9)
+            echo "9"
+            echo "bad luck from Japan"
+        ;;
 
-17)
-echo "17"
-echo "bad luck from Italy"
-;;
+        17)
+            echo "17"
+            echo "bad luck from Italy"
+        ;;
 
-*)
-echo $n
-;;
+        *)
+            echo $n
+        ;;
 
-esac
+    esac
 
-((n += 1))
+    ((n += 1))
 
 done
