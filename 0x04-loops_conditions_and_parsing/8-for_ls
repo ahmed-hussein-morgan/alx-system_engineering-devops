@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+#printing The content of the current directory in a list format
+#current_dir=.
+for  line in *;
+do
+    echo "Processing: $line"
+    if [[ ! $line =~ ^. ]];
+    then
+    name=echo "$line" | cut -d '-' -f2-
+    echo "Extracted name: $name"
+    echo "$name"
+    fi
+    #name=$(echo "$file" | cut -d'-' -f2-)
+    # #filename=$line
+    # #cut -d "-" -f 4-
+    # #echo "$line" | cut -d "-" -f 4-
+    # formated_line=$(echo "$line" | cut -d '-' f 5)
+
+    # echo "$formated_line"
+done
