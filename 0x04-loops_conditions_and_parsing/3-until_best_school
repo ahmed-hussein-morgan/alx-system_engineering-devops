@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#printing "bestschool" usin until
+n=0
+until [ $n -eq 10 ];
+do
+echo "Best School"
+((n+=1))
+done
