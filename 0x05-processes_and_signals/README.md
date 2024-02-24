@@ -1,0 +1,1 @@
+how to control signals in bash
