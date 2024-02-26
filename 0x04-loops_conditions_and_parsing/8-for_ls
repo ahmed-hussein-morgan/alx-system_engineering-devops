@@ -2,10 +2,10 @@
 #printing "bestschool"
 for file in *; do
     if [[ -f "$file" ]]; then
-        formatted_name=$(echo "$file" | sed 's/^[0-9]*-//')
+        formatted_name=${file//[0-9]*-/}
         
         if [[ "$formatted_name" == *"-"* ]]; then
-            name=$(echo "$formatted_name" | cut -d '-' -f  2-)
+            name=${formatted_name//-*/}
             echo "$name"
         else
             echo "$formatted_name"
