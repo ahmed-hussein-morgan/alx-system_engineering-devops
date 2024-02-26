@@ -1,18 +1,13 @@
 #!/usr/bin/env bash
 #printing "bestschool"
 for file in *; do
-    # Check if the file is a regular file (not a directory or special file)
     if [[ -f "$file" ]]; then
-        # Remove any leading number and dash from the filename
         formatted_name=$(echo "$file" | sed 's/^[0-9]*-//')
         
-        # If the filename still contains a dash, extract the part after the dash
         if [[ "$formatted_name" == *"-"* ]]; then
-            # Extract the part after the dash
             name=$(echo "$formatted_name" | cut -d '-' -f  2-)
             echo "$name"
         else
-            # If there's no dash, just print the formatted name
             echo "$formatted_name"
         fi
     fi
