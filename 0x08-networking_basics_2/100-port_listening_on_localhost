@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# listeb to the port
+
+nc -l -p 98
