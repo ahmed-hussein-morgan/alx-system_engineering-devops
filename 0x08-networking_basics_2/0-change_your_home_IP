@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+#change the home
 
 # Backup the original /etc/hosts file
 sudo cp /etc/hosts /etc/hosts.bak
