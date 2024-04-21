@@ -3,6 +3,6 @@
 
 file { '/etc/ssh/ssh_config':
   ensure => 'present',
-  owner   => 'ubuntu',
+  #owner   => 'ubuntu',
   content => "Host *\n IdentityFile ~/.ssh/school\n PasswordAuthentication no\n",
 }
