@@ -1,11 +1,17 @@
 #!/usr/bin/env bash
-# redirect to another page
-sudo apt-get update -y
-sudo apt-get install nginx -y
+# install Nginx on the server
+
+sudo apt -y update
+sudo apt -y install nginx
 sudo ufw allow 'Nginx HTTP'
-sudo echo "Hello World!" > /var/www/html/index.nginx-debian.html
-redirection_config="location = /redirect_me {\n\
-    return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\
-}"
-sudo sed -i "/server_name _;/a $redirection_config" /etc/nginx/sites-available/default
-sudo service nginx restart
+# enable nginx to ensure it starts automatically on boot
+sudo systemctl enable nginx
+sudo echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html
+
+string_to_replace="server_name _;"
+new_string_redir="location /redirect_me {\n return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n}"
+file_path="/etc/nginx/sites-available/default"
+
+sudo sed -i "s|$string_to_replace|$new_string_redir|" "$file_path"
+
+sudo systemctl reload nginx
