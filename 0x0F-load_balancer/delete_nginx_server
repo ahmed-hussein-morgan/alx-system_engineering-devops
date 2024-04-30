@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Delete the Nginx completely
+
+sudo apt-get -y remove --purge nginx*
+
+sudo apt-get -y autoremove --purge
