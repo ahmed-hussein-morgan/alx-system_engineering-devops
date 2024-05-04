@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# custome the X-Served-By response header to be a specific sever hostname
+# configure a new Ubuntu machine
 
 sudo apt -y update
 sudo apt -y install nginx
