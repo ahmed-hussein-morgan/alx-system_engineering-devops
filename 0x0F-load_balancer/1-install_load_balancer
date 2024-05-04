@@ -42,4 +42,5 @@ sudo systemctl enable haproxy
 sudo systemctl start haproxy
 
 # to make sure the setup completed correctly
-echo "HAProxy has been installed and configured."
+echo "web-01 , web-02"
+#echo "HAProxy has been installed and configured."
