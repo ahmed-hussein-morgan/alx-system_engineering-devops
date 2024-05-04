@@ -2,6 +2,8 @@
 # install and configure HAproxy load balancer
 sudo apt update
 
+sudo apt upgrade -y
+
 # Install HAProxy
 sudo apt install -y haproxy
 
