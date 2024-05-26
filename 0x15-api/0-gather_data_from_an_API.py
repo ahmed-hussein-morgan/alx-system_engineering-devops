@@ -1,44 +1,46 @@
 #!/usr/bin/python3
 """
-gather fak data using api
+Checks student output for returning info from REST API
 """
+
 import requests
 import sys
 
-def get_employee_todo_progress(employee_id):
-    # URL template for fetching employee data
-    url = f"https://jsonplaceholder.typicode.com/todos?userId={employee_id}"
+users_url = "https://jsonplaceholder.typicode.com/users"
+todos_url = "https://jsonplaceholder.typicode.com/todos"
+
+
+def first_line_formatting(id):
+    """ Check student output formatting """
+
+    todos_count = 0
+    todos_done = 0
+
+    resp = requests.get(todos_url).json()
+    for i in resp:
+        if i['userId'] == id:
+            todos_count += 1
+        if (i['completed'] and i['userId'] == id):
+            todos_done += 1
+
+    resp = requests.get(users_url).json()
+
+    name = None
+    for i in resp:
+        if i['id'] == id:
+            name = i['name']
     
-    try:
-        response = requests.get(url)
-        response.raise_for_status()  # Raises a HTTPError if the status is 4xx, 5xx
-    except requests.exceptions.HTTPError as errh:
-        print(f"HTTP Error: {errh}")
-        return
-    except requests.exceptions.ConnectionError as errc:
-        print(f"Error Connecting: {errc}")
-        return
-    except requests.exceptions.Timeout as errt:
-        print(f"Timeout Error: {errt}")
-        return
-    except requests.exceptions.RequestException as err:
-        print(f"Something went wrong: {err}")
-        return
-    
-    todos = response.json()
-    total_tasks = len(todos)
-    done_tasks = sum(1 for todo in todos if todo['completed'])
-    
-    print(f"Employee {todos[0]['title']} is done with tasks({done_tasks}/{total_tasks}):")
-    for todo in todos:
-        if todo['completed']:
-            print("\t", todo['title'])
+    filename = 'student_output'
+    with open(filename, 'r') as f:
+        first = f.readline().strip()
+
+    output = "Employee {} is done with tasks({}/{}):".format(name, todos_done, todos_count)
+
+    if first == output:
+        print("First line formatting: OK")
+    else:
+        print("First line formatting: Incorrect")
+
 
 if __name__ == "__main__":
-    if len(sys.argv)!= 2:
-        print("Usage: python script.py <EMPLOYEE_ID>")
-        sys.exit(1)
-    
-    employee_id = int(sys.argv[1])
-    get_employee_todo_progress(employee_id)
-
+    first_line_formatting(int(sys.argv[1]))
