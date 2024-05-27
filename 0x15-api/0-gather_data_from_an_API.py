@@ -37,6 +37,6 @@ if __name__ == "__main__":
 
     # print(f"Employee {user_name} is done with tasks({completed_tasks}/{total_tasks}):")
     print("Employee {} is done with \
-          tasks({}/{}):".format(user_name, completed_tasks, total_tasks))
+tasks({}/{}):".format(user_name, completed_tasks, total_tasks))
     for complete in tasks_title:
         print("\t", complete.get("title"))
