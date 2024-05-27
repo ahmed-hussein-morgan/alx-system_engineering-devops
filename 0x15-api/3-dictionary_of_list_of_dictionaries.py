@@ -1,18 +1,12 @@
 #!/usr/bin/python3
 """
-export data to json file
-{ "USER_ID": [{"task": "TASK_TITLE", "completed":
-TASK_COMPLETED_STATUS, "username": "USERNAME"},
- {"task": "TASK_TITLE", "completed": TASK_COMPLETED_STATUS,
-   "username": "USERNAME"}, ... ]}
- File: 2-export_to_JSON.py
-example:
-{"2": [{"task": "suscipit repellat esse quibusdam voluptatem incidunt",
- "completed": false, "username": "Antonette"},
-{"task": "distinctio vitae autem nihil ut molestias quo",
- "completed": true, "username": "Antonette"},
-{"task": "et itaque necessitatibus maxime molestiae qui quas velit",
- "completed": false, "username": "Antonette"}]}
+export data in the JSON format
+* Records all tasks from all employees
+* Format must be: { "USER_ID": [ {"username": "USERNAME", "task": "TASK_TITLE", "completed": TASK_COMPLETED_STATUS}, {"username": "USERNAME", "task": "TASK_TITLE", "completed": TASK_COMPLETED_STATUS}, ... ], "USER_ID": [ {"username": "USERNAME", "task": "TASK_TITLE", "completed": TASK_COMPLETED_STATUS}, {"username": "USERNAME", "task": "TASK_TITLE", "completed": TASK_COMPLETED_STATUS}, ... ]}
+* File name must be: todo_all_employees.json
+
+(complete this task -- the below is the code of task 02 to update it)
+
 """
 import json
 import requests
