@@ -34,10 +34,8 @@ if __name__ == "__main__":
             if task.get("completed") is True:
                 completed_tasks += 1
                 tasks_title.append(task)
-                # print(f"\t{task.get("title")}")
 
-    print(f"Employee {user_name} is done with tasks\
-          ({completed_tasks}/{total_tasks})")
+    print(f"Employee {user_name} is done with tasks({completed_tasks}/{total_tasks})")
     for complete in tasks_title:
-        print("\t" + complete.get("title"))
-        # print(f"\t{complete.get("title")}")
+        print("\t", complete.get("title"))
+
