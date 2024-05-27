@@ -30,7 +30,7 @@ if __name__ == "__main__":
     user_id = sys.argv[1]
 
     user_tasks = []
-    task_details = {}
+    # task_details = {}
     all_data = {}
 
     for user in user_json:
@@ -40,11 +40,14 @@ if __name__ == "__main__":
 
     for task in todo_json:
         if int(user_id) == task.get("userId"):
+            task_details = {}
             task_details["task"] = task.get("title")
             task_details["completed"] = task.get("completed")
             task_details["username"] = user_name
-        user_tasks.append(task_details)
+            user_tasks.append(task_details)
     all_data[user_id] = user_tasks
+
+    # print(len(user_tasks))
 
     with open(f"{user_id}.json", 'w') as file:
         json.dump(all_data, file)
