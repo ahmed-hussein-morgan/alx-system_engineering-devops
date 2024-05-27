@@ -3,7 +3,8 @@
 generate demo data using REST API of a todo list
 
 print first line in the following formate:
-Employee EMPLOYEE_NAME is done with tasks(NUMBER_OF_DONE_TASKS/TOTAL_NUMBER_OF_TASKS)
+Employee EMPLOYEE_NAME is done with tasks
+    (NUMBER_OF_DONE_TASKS/TOTAL_NUMBER_OF_TASKS)
 
 """
 import requests
@@ -16,7 +17,6 @@ if __name__ == "__main__":
     todo_json = to_do_response.json()
     user_json = user_response.json()
 
-
     user_name = ""
     task_name = ""
     completed_tasks = 0
@@ -27,16 +27,17 @@ if __name__ == "__main__":
     for user in user_json:
         if user_id == user.get("id"):
             user_name = user.get("name")
-    
+
     for task in todo_json:
         if user_id == task.get("userId"):
             total_tasks += 1
-            if task.get("completed") == True:
+            if task.get("completed") is True:
                 completed_tasks += 1
                 tasks_title.append(task)
                 # print(f"\t{task.get("title")}")
-    
-    print(f"Employee {user_name} is done with tasks({completed_tasks}/{total_tasks})")
+
+    print(f"Employee {user_name} is done with tasks\
+          ({completed_tasks}/{total_tasks})")
     for complete in tasks_title:
         print("\t" + complete.get("title"))
         # print(f"\t{complete.get("title")}")
