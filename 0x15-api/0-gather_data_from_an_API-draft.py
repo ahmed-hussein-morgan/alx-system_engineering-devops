@@ -10,7 +10,8 @@ import requests
 import sys
 
 if __name__ == "__main__":
-    response = requests.get("https://jsonplaceholder.typicode.com/todos")
+    to_do_response = requests.get("https://jsonplaceholder.typicode.com/todos")
+    user_response = requests.get("https://jsonplaceholder.typicode.com/users")
     # decoded_response = response.content.decode()
     # print(type(decoded_response))
     # print(decoded_response)
@@ -18,11 +19,13 @@ if __name__ == "__main__":
     # for task in decoded_response:
     #     print(task)
 
-    print(type(response))
+    print(type(to_do_response))
     # print(response.json())
 
     # print item in dictionary
 
-    for item in response.json():
-        print(item.get("userId"))
-
+    for item in to_do_response.json():
+        print(item)
+    print("########################################################################")
+    for item in user_response.json():
+        print(item)

@@ -1,46 +1,42 @@
 #!/usr/bin/python3
 """
-Checks student output for returning info from REST API
-"""
+generate demo data using REST API of a todo list
 
+print first line in the following formate:
+Employee EMPLOYEE_NAME is done with tasks(NUMBER_OF_DONE_TASKS/TOTAL_NUMBER_OF_TASKS)
+
+"""
 import requests
 import sys
 
-users_url = "https://jsonplaceholder.typicode.com/users"
-todos_url = "https://jsonplaceholder.typicode.com/todos"
-
-
-def first_line_formatting(id):
-    """ Check student output formatting """
-
-    todos_count = 0
-    todos_done = 0
-
-    resp = requests.get(todos_url).json()
-    for i in resp:
-        if i['userId'] == id:
-            todos_count += 1
-        if (i['completed'] and i['userId'] == id):
-            todos_done += 1
-
-    resp = requests.get(users_url).json()
-
-    name = None
-    for i in resp:
-        if i['id'] == id:
-            name = i['name']
-    
-    filename = 'student_output'
-    with open(filename, 'r') as f:
-        first = f.readline().strip()
-
-    output = "Employee {} is done with tasks({}/{}):".format(name, todos_done, todos_count)
-
-    if first == output:
-        print("First line formatting: OK")
-    else:
-        print("First line formatting: Incorrect")
-
-
 if __name__ == "__main__":
-    first_line_formatting(int(sys.argv[1]))
+    to_do_response = requests.get("https://jsonplaceholder.typicode.com/todos")
+    user_response = requests.get("https://jsonplaceholder.typicode.com/users")
+
+    todo_json = to_do_response.json()
+    user_json = user_response.json()
+
+
+    user_name = ""
+    task_name = ""
+    completed_tasks = 0
+    total_tasks = 0
+    user_id = int(sys.argv[1])
+    tasks_title = []
+
+    for user in user_json:
+        if user_id == user.get("id"):
+            user_name = user.get("name")
+    
+    for task in todo_json:
+        if user_id == task.get("userId"):
+            total_tasks += 1
+            if task.get("completed") == True:
+                completed_tasks += 1
+                tasks_title.append(task)
+                # print(f"\t{task.get("title")}")
+    
+    print(f"Employee {user_name} is done with tasks({completed_tasks}/{total_tasks})")
+    for complete in tasks_title:
+        print("\t" + complete.get("title"))
+        # print(f"\t{complete.get("title")}")
