@@ -37,6 +37,7 @@ def number_of_subscribers(subreddit):
         print(f"An error occurred: {e}")
         return 0
 
+
 # Example usage
 if __name__ == "__main__":
     import sys
@@ -46,4 +47,3 @@ if __name__ == "__main__":
     else:
         subreddit = sys.argv[1]
         print("{:d}".format(number_of_subscribers(subreddit)))
-    
